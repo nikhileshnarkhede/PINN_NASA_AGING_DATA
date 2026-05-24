@@ -1,0 +1,53 @@
+# requirements.txt
+# =================
+# Dependencies for the IGBT RUL Physics-Informed Neural Network project.
+#
+# Reproduces: Lu, Guo, Liu & Shi (2023), "Remaining useful lifetime estimation
+# for discrete power electronic devices using physics-informed neural network",
+# Scientific Reports 13:10167. https://doi.org/10.1038/s41598-023-37154-5
+#
+# Install with:  pip install -r requirements.txt
+# Tested with Python 3.10 - 3.12.
+
+# --- Deep learning ----------------------------------------------------------
+# RNN / LSTM backbone and the differentiable physics-informed loss terms.
+# Specify the CUDA 12.6 repository (Adjust cu126 to your specific GPU driver needs)
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch>=2.0
+
+# --- Numerical core ---------------------------------------------------------
+numpy>=1.26.0
+
+# --- NASA dataset I/O -------------------------------------------------------
+# scipy.io.loadmat reads the NASA PCoE IGBT accelerated-aging .mat files.
+scipy>=1.11.0
+
+# --- Tabular handling -------------------------------------------------------
+# Used by data/features.py for the preprocessing pipeline.
+pandas>=2.1.0
+
+# --- Preprocessing & metrics ------------------------------------------------
+# StandardScaler (standardization step) and the R-squared score.
+scikit-learn>=1.3.0
+
+# --- Visualisation ----------------------------------------------------------
+# Publication-quality RUL prediction and MSE / R-squared comparison plots.
+matplotlib>=3.8.0
+
+# --- Experiment tracking ----------------------------------------------------
+# Logs config, metrics and checkpoints in training/trainer.py.
+mlflow>=2.9.0
+
+# --- Training utilities -----------------------------------------------------
+tqdm>=4.66.0
+
+# --- Optional: model visualisation ------------------------------------------
+# Used ONLY by utils/visualize_model.py. The core train / eval / compare
+# pipeline does not need these -- visualize_model.py degrades gracefully when
+# they are absent, so they are safe to omit.
+#   torchinfo -- Keras-style per-layer table (pure Python, no system deps).
+#   torchviz  -- autograd computation-graph PNG. ALSO needs the Graphviz
+#                SYSTEM package installed separately (https://graphviz.org/
+#                download/) and on PATH; pip cannot install that part.
+torchinfo>=1.8.0
+torchviz>=0.0.2

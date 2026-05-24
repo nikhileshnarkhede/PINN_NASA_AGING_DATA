@@ -1,0 +1,68 @@
+# ============================================================================
+# .gitignore  --  IGBT RUL PINN project
+# ============================================================================
+
+# --- Python bytecode / caches -----------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# --- Virtual environments ---------------------------------------------------
+# This project's venv is `venv/`; `.venv/` and `env/` are common alternatives.
+venv/
+.venv/
+env/
+ENV/
+
+# --- Project outputs (all generated artifacts) ------------------------------
+# Everything the pipeline produces lands in outputs/ -- checkpoints, MLflow
+# runs, plots, the standardizer stats. None of it is source.
+outputs/
+
+# Stray MLflow / artifact folders if a tool writes outside outputs/
+mlruns/
+*.mlflow
+
+# --- NASA IGBT dataset ------------------------------------------------------
+# The raw .mat files are large and not ours to redistribute. Anyone cloning
+# the repo must place the four device files in data/raw/ themselves
+# (see README section 5).
+data/raw/*.mat
+
+# --- Computation-graph intermediates ----------------------------------------
+# torchviz / graphviz can leave the raw DOT source next to the rendered image.
+*.gv
+model_graph_*
+
+# --- Build / packaging ------------------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Test / coverage --------------------------------------------------------
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# --- Editors and IDEs -------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS files ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Jupyter ----------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- Environment / secrets --------------------------------------------------
+.env
+*.env
