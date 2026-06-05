@@ -74,7 +74,7 @@ GRAPHVIZ_FORMATS: list[str] = ["png", "pdf"]
 #   GRAPH_SHOW_ATTRS -- show autograd-node attributes on each op.
 #   GRAPH_SHOW_SAVED -- show the tensors each op saves for the backward pass.
 # Both add detail (and clutter); set False for a cleaner graph.
-GRAPH_SHOW_ATTRS: bool = True
+GRAPH_SHOW_ATTRS: bool = False
 GRAPH_SHOW_SAVED: bool = True
 
 # Output format(s) for the RUL-vs-cycle plot (utils/main `plot` command).
@@ -204,7 +204,7 @@ BACKBONE: str = "lstm"
 # fixed by the cell type (RNN = tanh, LSTM = its internal gates) and is not
 # configurable -- that is a PyTorch limitation, not a project choice.
 RECURRENT_HIDDEN:  int   = 80      # hidden units per recurrent layer (paper: 80)
-RECURRENT_LAYERS:  int   = 1       # number of stacked recurrent layers (>= 1)
+RECURRENT_LAYERS:  int   = 2       # number of stacked recurrent layers (>= 1)
 RECURRENT_DROPOUT: float = 0.0     # dropout BETWEEN recurrent layers;
                                    # ignored by PyTorch when RECURRENT_LAYERS = 1
 
